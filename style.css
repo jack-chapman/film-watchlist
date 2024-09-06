@@ -1,0 +1,217 @@
+html {
+    box-sizing: border-box;
+    background-color: #FAF9F6;
+    ;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    max-width: 800px;
+    margin: 0 auto 100px;
+}
+
+/* Text */
+
+h1,
+h2,
+p {
+    margin: 0;
+}
+
+.header-links {
+    font-weight: 500;
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header-links:hover {
+    text-decoration: underline;
+}
+
+h1,
+.header-links {
+    margin: 100px 50px 80px;
+    color: #FAF9F6;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+/* Images */
+.poster-img {
+    max-width: 180px;
+    display: flex;
+}
+
+/* Add & Remove Btns */
+
+
+
+.watchlist-btn,
+.remove-btn {
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #FAF9F6;
+    font-family: "Poppins", sans-serif;
+}
+
+.watchlist-btn i:hover,
+.watchlist-placeholder i:hover {
+    color: #2a9d8f;
+}
+
+.remove-btn i:hover {
+    color: #ef233c;
+}
+
+.fa-circle-check {
+    color: #2a9d8f;
+}
+
+
+/* Layout */
+
+.find-film-header,
+.watchlist-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #121212;
+
+}
+
+.search-section {
+    display: flex;
+    width: 100%;
+}
+
+.search-span {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    margin: -20px 15px 0;
+    border-radius: 5px;
+    padding: 0 0 0 10px;
+    background-color: white;
+}
+
+.search-span,
+.search-span button {
+    border: 1px solid #D1D5DB;
+}
+
+.search-span input,
+.search-span button {
+    height: 40px;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    color: #374151;
+}
+
+.search-span input {
+    width: 100%;
+    border: none;
+    padding: 0 5px;
+}
+
+.search-span button {
+    padding: 0 40px;
+    border-radius: 0 5px 5px 0;
+    border-bottom: none;
+    border-right: none;
+    border-top: none;
+    background-color: #F9FAFB;
+    cursor: pointer;
+}
+
+.movie-result {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    padding: 20px;
+    border-bottom: 1px #E5E7EB solid;
+}
+
+.movie-details {
+    padding: 20px 25px;
+}
+
+.small-detail,
+.about-detail,
+.movie-title {
+    display: flex;
+    gap: 25px;
+}
+
+.movie-title {
+    align-items: center;
+}
+
+.movie-title i {
+    color: #ffbe0b;
+}
+
+.movie-title p {
+    font-size: 14px;
+}
+
+.small-detail {
+    max-width: 500px;
+    font-size: 16px;
+    font-weight: 200;
+    color: #111827;
+    padding: 5px 0;
+}
+
+.about-detail {
+    max-width: 800px;
+    color: #6B7280;
+    font-weight: 400;
+    padding: 10px 0 0 0;
+}
+
+
+/* Placeholders */
+
+.watchlist-placeholder,
+.start-placeholder,
+.no-search-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 400px;
+    align-items: center;
+    color: #bfc0c0;
+    font-weight: 600;
+    font-size: 32px;
+}
+
+.watchlist-placeholder a {
+    text-decoration: none;
+    color: #121212;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 8px 0 0 0;
+}
+
+.watchlist-placeholder a:hover {
+    text-decoration: underline
+}
+
+.start-placeholder i,
+.no-search-placeholder i {
+    font-size: 100px;
+}
