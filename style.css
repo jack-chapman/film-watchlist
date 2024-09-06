@@ -164,6 +164,7 @@ h2 {
     color: #ffbe0b;
 }
 
+
 .movie-title p {
     font-size: 14px;
 }
@@ -214,4 +215,16 @@ h2 {
 .start-placeholder i,
 .no-search-placeholder i {
     font-size: 100px;
+}
+
+/* Media Queries */
+
+@media (min-width:800px) {
+    .movie-title p {
+        white-space: nowrap;
+    }
+
+    .small-detail {
+        white-space: nowrap;
+    }
 }
