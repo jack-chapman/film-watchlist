@@ -2,6 +2,7 @@ const watchlistResultsElement = document.getElementById("watchlist-results")
 const searchInput = document.getElementById("search-input")
 const searchBtn = document.getElementById("search-btn")
 let movieResults = JSON.parse(localStorage.getItem("Watchlist"))
+let htmlString = ""
 
 renderWatchlist()
 
@@ -20,15 +21,10 @@ function renderWatchlist() {
 }
 
 
-//Add button and saving to local storage
-
 function saveToWatchlist(filmID) {
     const foundMovie = movieResults.find((movie) => {
         return movie.imdbID === filmID
     })
-    // put foundMovie into an array
-    // stringify the array
-    // store it in localStorage
 
     const moviesToSave = [foundMovie]
     const savedMovies = JSON.stringify(moviesToSave)
@@ -54,12 +50,10 @@ function removeMovieFromLocal(filmID) {
     localStorage.setItem("Watchlist", savedMovies)
     movieResults = JSON.parse(localStorage.getItem("Watchlist"))
     renderWatchlist()
-
 }
 
 function renderWatchlistResults() {
 
-    let htmlString = ""
     movieResults.forEach(data => {
         htmlString += `
         <div class="movie-result">

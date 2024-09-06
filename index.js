@@ -2,28 +2,31 @@ const movieResultsElement = document.getElementById("movie-results")
 const searchInput = document.getElementById("search-input")
 const searchBtn = document.getElementById("search-btn")
 let movieResults = []
+let htmlString = ""
 
-
+// Prompt to use search
 movieResultsElement.innerHTML = ` 
     <div class="start-placeholder"> 
          <i class="fa-solid fa-film"></i> <p>Start exploring</p>
     </div>
 `
 
-//SEARCH FOR FILMS PAGE
+//No searches found message
+function renderNoResultsMessage() {
+    movieResultsElement.innerHTML = ` 
+    <div class="no-search-placeholder"> 
+    <i class="fa-solid fa-film"></i> <p>No results found, sorry!</p>
+</div>
+`
+}
 
-//Search value being searched when button clicked
-
+//Search button and results
 searchBtn.addEventListener("click", function () {
     fetch(`http://www.omdbapi.com/?apikey=863d41df&s=${searchInput.value}&type=movie`)
         .then(response => response.json())
         .then(data => {
             if (data.Response === "False") {
-                return movieResultsElement.innerHTML = ` 
-         <div class="no-search-placeholder"> 
-         <i class="fa-solid fa-film"></i> <p>No results found, sorry!</p>
-    </div>
-`
+                return renderNoResultsMessage()
             } else {
                 getMovieDetails(data.Search)
             }
@@ -38,28 +41,26 @@ function getMovieDetails(moviesArr) {
     })
     Promise.all(requests)
         .then(responses => {
-            console.log(responses)
             movieResults = responses.filter((movie) => {
                 return movie.Title !== "N/A" && movie.Poster !== "N/A"
             })
             renderMovieResults()
-            console.log(movieResults)
         })
-
 }
 
-//Add button and saving to local storage
-
-function saveToWatchlist(filmID) {
-
+function getSavedMovies() {
     const storedWatchlist = localStorage.getItem("Watchlist")
-
     let movieWatchlist = []
 
     if (storedWatchlist !== null) {
         movieWatchlist = JSON.parse(storedWatchlist)
     }
+    return movieWatchlist
+}
 
+function saveToWatchlist(filmID) {
+
+    const movieWatchlist = getSavedMovies()
     const alreadyInWatchlist = movieWatchlist.find((movie) => {
         return movie.imdbID === filmID
     })
@@ -70,7 +71,6 @@ function saveToWatchlist(filmID) {
         return movie.imdbID === filmID
     })
 
-
     movieWatchlist.push(foundMovie)
     const savedMovies = JSON.stringify(movieWatchlist)
     localStorage.setItem("Watchlist", savedMovies)
@@ -78,9 +78,20 @@ function saveToWatchlist(filmID) {
 }
 
 function renderMovieResults() {
-    let htmlString = ""
+
+    const addToWatchlistBtnInnerHtml = `<i class="fa-solid fa-circle-plus"></i> Watchlist `
+    const alreadySavedBtnInnerHtml = `<i class="fa-solid fa-circle-check"></i> Added to Watchlist`
+
+    const movieWatchlist = getSavedMovies()
 
     movieResults.forEach(data => {
+
+        const alreadyInWatchlist = movieWatchlist.find((movie) => {
+            return movie.imdbID === data.imdbID
+        })
+
+        const btnInnerHtml = alreadyInWatchlist ? alreadySavedBtnInnerHtml : addToWatchlistBtnInnerHtml
+
         htmlString += `
         <div class="movie-result">
             <div class="poster-details">
@@ -95,7 +106,7 @@ function renderMovieResults() {
                             <p> ${data.Runtime === "N/A" ? "Runtime unavailable" : data.Runtime} </p>
                             <p> ${data.Genre === "N/A" ? "Genre unavailable" : data.Genre} </p>
                             
-                            <button data-add-button data-add-id="${data.imdbID}" class="watchlist-btn"> <i class="fa-solid fa-circle-plus"></i> Watchlist </button>
+                            <button data-add-button data-add-id="${data.imdbID}" class="watchlist-btn"> ${btnInnerHtml} </button>
                         </div>
                         <div class="about-detail"> 
                             <p>${data.Plot === "N/A" ? "No description available" : data.Plot}</p> 
@@ -108,32 +119,7 @@ function renderMovieResults() {
     document.querySelectorAll("[data-add-button]").forEach(button => {
         button.addEventListener('click', () => {
             saveToWatchlist(button.dataset.addId)
-            button.innerHTML = `<i class="fa-solid fa-circle-check"></i> Added to Watchlist`
+            button.innerHTML = alreadySavedBtnInnerHtml
         })
     })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//If unable to find movie then display the text 'Unable to find what you're looking for. Please try again.
-//Display search results - inner html
-//add to watchlist button saves the data to local storage
-
-
-
-//WATCHLIST PAGE
-
-//Load data saved from local storage
-// remove button to remove item from watchlist
