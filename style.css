@@ -13,11 +13,10 @@ html {
 body {
     font-family: "Poppins", sans-serif;
     max-width: 800px;
-    margin: 0 auto 100px;
+    margin: 0 auto 6.25em;
 }
 
 /* Text */
-
 h1,
 h2,
 p {
@@ -26,23 +25,26 @@ p {
 
 .header-links {
     font-weight: 500;
-    font-size: 18px;
+    font-size: 1.125rem;
+    /* 18px */
     text-decoration: none;
     cursor: pointer;
+    margin: 5.5em 2.7em 4.45em;
 }
 
 .header-links:hover {
     text-decoration: underline;
 }
 
-h1,
-.header-links {
-    margin: 100px 50px 80px;
+.header-links,
+h1 {
     color: #FAF9F6;
 }
 
 h1 {
-    font-size: 42px;
+    margin: 2.4em 1.2em 1.9em;
+    font-size: 2.625rem;
+    /* 42px */
 }
 
 h2 {
@@ -62,7 +64,8 @@ h2 {
 .watchlist-btn,
 .remove-btn {
     border: none;
-    font-size: 16px;
+    font-size: 1rem;
+    /* 16px */
     cursor: pointer;
     background-color: #FAF9F6;
     font-family: "Poppins", sans-serif;
@@ -102,9 +105,9 @@ h2 {
     display: flex;
     flex-grow: 1;
     align-items: center;
-    margin: -20px 15px 0;
+    margin: -1.25em 0.95em 0;
     border-radius: 5px;
-    padding: 0 0 0 10px;
+    padding: 0 0 0 0.625em;
     background-color: white;
 }
 
@@ -116,7 +119,8 @@ h2 {
 .search-span input,
 .search-span button {
     height: 40px;
-    font-size: 16px;
+    font-size: 1rem;
+    /* 16px */
     font-family: "Poppins", sans-serif;
     color: #374151;
 }
@@ -124,11 +128,11 @@ h2 {
 .search-span input {
     width: 100%;
     border: none;
-    padding: 0 5px;
+    padding: 0 0.3em;
 }
 
 .search-span button {
-    padding: 0 40px;
+    padding: 0 2.5em;
     border-radius: 0 5px 5px 0;
     border-bottom: none;
     border-right: none;
@@ -140,13 +144,13 @@ h2 {
 .movie-result {
     display: flex;
     flex-direction: row;
-    margin: 20px;
-    padding: 20px;
+    margin: 1.25em;
+    padding: 1.25em;
     border-bottom: 1px #E5E7EB solid;
 }
 
 .movie-details {
-    padding: 20px 25px;
+    padding: 1.25em 1.56em;
 }
 
 .small-detail,
@@ -166,22 +170,24 @@ h2 {
 
 
 .movie-title p {
-    font-size: 14px;
+    font-size: 0.875rem
+        /* 14px */
 }
 
 .small-detail {
     max-width: 500px;
-    font-size: 16px;
+    font-size: 1rem;
+    /* 16px */
     font-weight: 200;
     color: #111827;
-    padding: 5px 0;
+    padding: 0.32em 0;
 }
 
 .about-detail {
     max-width: 800px;
     color: #6B7280;
     font-weight: 400;
-    padding: 10px 0 0 0;
+    padding: 0.625em 0 0 0;
 }
 
 
@@ -197,15 +203,17 @@ h2 {
     align-items: center;
     color: #bfc0c0;
     font-weight: 600;
-    font-size: 32px;
+    font-size: 2rem;
+    /* 32px */
 }
 
 .watchlist-placeholder a {
     text-decoration: none;
     color: #121212;
-    font-size: 24px;
+    font-size: 1.5rem;
+    /* 24px */
     font-weight: 500;
-    margin: 8px 0 0 0;
+    margin: 0.33em 0 0 0;
 }
 
 .watchlist-placeholder a:hover {
