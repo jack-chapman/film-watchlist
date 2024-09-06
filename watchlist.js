@@ -2,7 +2,6 @@ const watchlistResultsElement = document.getElementById("watchlist-results")
 const searchInput = document.getElementById("search-input")
 const searchBtn = document.getElementById("search-btn")
 let movieResults = JSON.parse(localStorage.getItem("Watchlist"))
-let htmlString = ""
 
 renderWatchlist()
 
@@ -53,7 +52,7 @@ function removeMovieFromLocal(filmID) {
 }
 
 function renderWatchlistResults() {
-
+    let htmlString = ""
     movieResults.forEach(data => {
         htmlString += `
         <div class="movie-result">

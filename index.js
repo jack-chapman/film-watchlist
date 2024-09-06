@@ -2,7 +2,7 @@ const movieResultsElement = document.getElementById("movie-results")
 const searchInput = document.getElementById("search-input")
 const searchBtn = document.getElementById("search-btn")
 let movieResults = []
-let htmlString = ""
+
 
 // Prompt to use search
 movieResultsElement.innerHTML = ` 
@@ -83,7 +83,7 @@ function renderMovieResults() {
     const alreadySavedBtnInnerHtml = `<i class="fa-solid fa-circle-check"></i> Added to Watchlist`
 
     const movieWatchlist = getSavedMovies()
-
+    let htmlString = ""
     movieResults.forEach(data => {
 
         const alreadyInWatchlist = movieWatchlist.find((movie) => {
