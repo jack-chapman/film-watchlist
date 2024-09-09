@@ -22,7 +22,7 @@ function renderNoResultsMessage() {
 
 //Search button and results
 searchBtn.addEventListener("click", function () {
-    fetch(`http://www.omdbapi.com/?apikey=863d41df&s=${searchInput.value}&type=movie`)
+    fetch(`https://www.omdbapi.com/?apikey=863d41df&s=${searchInput.value}&type=movie`)
         .then(response => response.json())
         .then(data => {
             if (data.Response === "False") {
@@ -37,7 +37,7 @@ searchBtn.addEventListener("click", function () {
 function getMovieDetails(moviesArr) {
     const requests = []
     moviesArr.forEach(movie => {
-        requests.push(fetch(`http://www.omdbapi.com/?apikey=863d41df&i=${movie.imdbID}&type=movie`).then(res => res.json()))
+        requests.push(fetch(`https://www.omdbapi.com/?apikey=863d41df&i=${movie.imdbID}&type=movie`).then(res => res.json()))
     })
     Promise.all(requests)
         .then(responses => {
