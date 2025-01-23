@@ -20,8 +20,17 @@ function renderNoResultsMessage() {
 `
 }
 
-//Search button and results
-searchBtn.addEventListener("click", function () {
+//Loading message
+function renderLoadingMessage() {
+    movieResultsElement.innerHTML = `
+    <div class="loading-placeholder">
+    <i class="fa-solid fa-spinner"></i> <p> Result are loading... </p>
+    </div>
+    `
+}
+
+function searchMovieDatabase() {
+    renderLoadingMessage()
     fetch(`https://www.omdbapi.com/?apikey=863d41df&s=${searchInput.value}&type=movie`)
         .then(response => response.json())
         .then(data => {
@@ -31,7 +40,13 @@ searchBtn.addEventListener("click", function () {
                 getMovieDetails(data.Search)
             }
         })
-})
+}
+
+//Search input
+searchInput.addEventListener("keypress", searchMovieDatabase)
+
+//Search button
+searchBtn.addEventListener("click", searchMovieDatabase)
 
 //Get movie details from search movie imdb ID
 function getMovieDetails(moviesArr) {

@@ -187,7 +187,8 @@ h2 {
 
 .watchlist-placeholder,
 .start-placeholder,
-.no-search-placeholder {
+.no-search-placeholder,
+.loading-placeholder {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -213,7 +214,8 @@ h2 {
 }
 
 .start-placeholder i,
-.no-search-placeholder i {
+.no-search-placeholder i,
+.loading-placeholder i {
     font-size: 100px;
 }
 
